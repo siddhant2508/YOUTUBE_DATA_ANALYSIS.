@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 This project demonstrates an **end-to-end analytics pipeline** for YouTube trending videos using **AWS services**.  
-The pipeline ingests trending video datasets, cleans and enriches them, stores them in a data lake, and visualizes interactive insights in **Amazon QuickSight**.
+The pipeline ingests trending video datasets, cleans and enriches them, stores them, and visualizes interactive insights in **Amazon QuickSight**.
 
 ---
 
@@ -11,8 +11,7 @@ YouTube produces millions of video interactions daily across multiple categories
 Businesses, advertisers, and content creators often lack clear insights into:
 - Which content categories are trending
 - Who the top-performing creators are
-- Regional audience preferences
-- How engagement metrics (views, likes, comments) correlate
+- How engagement metrics (views, likes) correlate
 
 Without these insights, decision-makers risk missing trends, misallocating ad budgets, and creating less impactful content.
 
@@ -30,24 +29,22 @@ As a Data Analyst, the solution involved:
 
 3. **Data Processing**
    - Used **AWS Glue (PySpark)** to:
-     - Clean and deduplicate records
+     - Clean records
      - Join category mapping data
-     - Add calculated metrics (like rate, comment rate, engagement score)
+     - Add calculated metrics (like rate, comment rate)
      - Output partitioned Parquet files to S3
 
 4. **Data Querying**
    - Created **Athena tables and views** over the cleansed dataset for efficient querying.
 
 5. **Visualization**
-   - Built an **Amazon QuickSight** dashboard with KPIs, bar charts, geo maps, line charts, scatter plots, and drill-down tables.
+   - Built an **Amazon QuickSight** dashboard with KPIs, bar charts, scatter plots, donut chart.
 
 ---
 
 ## 📈 Outcomes & Business Value
 - **Top Categories:** Music, Entertainment, People & Blogs dominate engagement.
 - **Regional Trends:** US leads in total views; UK shows higher engagement in niche categories.
-- **Engagement Metrics:** Strong correlation (~0.9) between views and likes; identified viral outliers.
-- **Reusable Pipeline:** Automates ingestion, transformation, and visualization for daily updates.
 
 **Business Impact:**
 - **Advertisers:** Target high-performing categories and geographies for better ROI.
@@ -104,7 +101,7 @@ As a Data Analyst, the solution involved:
 3. **Glue Job** cleans, enriches, and writes partitioned Parquet to `s3://yt-data-cleansed/`
 4. **Athena Tables & Views** provide query access.
 5. **QuickSight Dataset** connects to Athena for visualization.
-6. **Dashboard** updates automatically via SPICE refresh.
+   
 
 ---
 
@@ -119,11 +116,11 @@ As a Data Analyst, the solution involved:
 2. **Bar Chart – Top Channels by Engagement Score**
 3. **Line Chart – Views & Likes Over Time**
 4. **Scatter Plot – Views vs Likes**
+5. **Donut Chart – Total Views by Region**
 
 
 ### **Filters**
 - Region (US, GB, CA)
-- Date range (trending_date)
 - Category
 
 ---
@@ -137,7 +134,6 @@ As a Data Analyst, the solution involved:
 3. **Create Athena Tables**
    - Run `athena_queries.sql` to define tables/views
 4. **Connect QuickSight**
-   - Import Athena table/view into SPICE
    - Build visuals as per dashboard layout
 
 ---
