@@ -137,6 +137,3 @@ As a Data Analyst, the solution involved:
    - Build visuals as per dashboard layout
 
 ---
-
-## 📅 Last Updated
-August 11, 2025
